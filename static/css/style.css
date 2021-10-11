@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+nav ul a {
+    color: 000;
+}
+
+nav .brand-logo.left {
+    color: 0000;
+}
+
+.btn, .btn-large, .btn-small {
+    background-color: chocolate;
+    margin-bottom: 40px;
+
+}
+
+.in-icon {
+    margin-right: 5px;
+}
+
+a {
+    color: #ffffff;
+    margin-left: 0.5rem;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+  
+.bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -10;
+      height: 100%;
+      width: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      object-fit: cover;
+    }
+    
+.card .card-content {
+    background:rgba(255,255,255, 0.4);
+    margin-top: 35px;
+    border-radius: 10px;
+}
