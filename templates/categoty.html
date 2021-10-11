@@ -9,10 +9,9 @@
 <body>
     {% for cook in cooking %}
         {{ cook.category_name }}<br>
-        {{ cook.food_name }}<br>
-        {{ cook.food_discription }}<br>
-        {{ cook.cooking_time }}<br>
         {{ cook.ingredients }}<br>
+        {{ cook.cooking_time }}<br>
+        {{ cook.tools}}<br>
     {% endfor %}
 </body>
 </html>
