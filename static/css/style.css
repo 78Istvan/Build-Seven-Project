@@ -46,3 +46,7 @@ body, html {
     margin-top: 35px;
     border-radius: 10px;
 }
+
+.sidenav {
+    background-color: #e6d2a7;
+}
