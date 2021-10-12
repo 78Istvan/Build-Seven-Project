@@ -44,7 +44,7 @@ def registration():
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
-        return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("login", username=session["user"]))
     return render_template("registration.html")
 
 
@@ -87,6 +87,13 @@ def profile(username):
         return render_template("profile.html", username=username)
 
     return render_template(url_for("login"))
+
+
+@app.route("/logout")
+def logout():
+    # loggong out user, removing session cookie
+    session.pop("user")
+    return redirect(url_for("get_cooking"))
 
 
 if __name__ == "__main__":
