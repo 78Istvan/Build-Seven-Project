@@ -50,3 +50,7 @@ body, html {
 .sidenav {
     background-color: #e6d2a7;
 }
+
+.account-head {
+    text-align: center;
+}

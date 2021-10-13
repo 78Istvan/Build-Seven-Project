@@ -35,6 +35,17 @@ def registration():
             flash("Username not free, choose another one")
             return redirect(url_for("registration"))
 
+        if len(request.form.get("username")) not in range(5, 11):
+            flash(
+                "Username should be between 5-10 character, please try again")
+            return redirect(url_for("registration"))
+
+        if len(request.form.get("password")) not in range(5, 11):
+            flash(
+                "Password should be between 5-10 character, please try again")
+            return redirect(url_for("registration"))
+
+
         registration = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
@@ -45,6 +56,7 @@ def registration():
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
         return redirect(url_for("login", username=session["user"]))
+
     return render_template("registration.html")
 
 
@@ -99,6 +111,26 @@ def logout():
 @app.route("/account")
 def account():
     return render_template("account.html")
+
+
+@app.route("/add_recipe", methods=["GET", "POST"])
+def add_recipe():
+    if request.method == "POST":
+        recipe = {
+            "image_url": request.form.get("image_url"),
+            "category_name": request.form.get("category_name"),
+            "ingredients": request.form.get("ingredients"),
+            "cooking_time": request.form.get("cooking_time"),
+            "tools": request.form.get("tools"),
+            "created_by": session["user"]
+        }
+        mongo.db.cooking.insert_one(recipe)
+        flash("Recipe Successfully Created")
+        return redirect(url_for("get_cooking"))
+    
+    meat_categories = mongo.db.meat_categories.find().sort("category_name", 1)
+    return render_template("add_recipe.html", meat_categories=meat_categories)
+
 
 
 if __name__ == "__main__":
