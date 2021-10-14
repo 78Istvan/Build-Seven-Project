@@ -2,13 +2,32 @@
 {% block content %}
         <div class=" extended">
            <img src="{{ url_for('static', filename='images/bbq-bg6.jpg') }}" class="bg">
-    {% for cook in cooking %}
-        {{ cook.category_name }}<br>
-        {{ cook.food_name }}<br>
-        {{ cook.food_discription }}<br>
-        {{ cook.cooking_time }}<br>
-        {{ cook.ingredients }}<br>
-    {% endfor %}
+    
             </div>
-           
+            <ul class="card s12 m8 l4">
+                {% for cook in cooking %}
+                <li>
+                    <div class="col s9">
+                      {{ cook.image_url }} 
+                    </div>
+                  </div>
+                <div>
+                    <p> {{ cook.category_name }} </p>
+                    <p> {{ cook.recipe_title }} </p>
+                    <p> {{ cook.ingredients }} </p>
+                    <p> {{ cook.cooking_time }} </p>
+                    <p> {{ cook.tools }}</p>
+                    <p> {{ cook.description }} </p>
+                    <p><em>by: {{ cook.created_by }}</em></p>
+                  </div>
+              </li>
+              {% endfor %}
+        
+          </ul>
 {% endblock %}
+                    
+                 
+                     
+                      
+
+
