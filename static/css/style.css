@@ -54,3 +54,18 @@ body, html {
 .account-head {
     text-align: center;
 }
+
+.card-category {
+    font-size: large;
+    color:#ffffff;
+    background-color: brown;
+    text-align: center;
+}
+
+.card-main {
+    background-color: #e6d2a7;
+}
+
+.card .card-title {
+    font-size: 35px;
+}

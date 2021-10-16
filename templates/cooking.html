@@ -1,28 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
+
         <div class=" extended">
            <img src="{{ url_for('static', filename='images/bbq-bg6.jpg') }}" class="bg">
-    
-        </div>
-            <div class="row">
+        
+          
+           <div class="row col s12 m6 l3 offset-l2 center-align">
               {% for cook in cooking %}
-              <div >
-                <ul class=" card col s12 m3 14">
+              
+              <div class="card row col l4 offset-l4 card-main">
+            <ul>
               <li>
+
+                <div class="card-category">
                   <span class="card-title">{{ cook.category_name }}</span>
-                  <p> {{ cook.category_name }} </p>
-                  <p> {{ cook.recipe_title }} </p>
-                  <p> {{ cook.ingredients }} </p>
-                  <p> {{ cook.cooking_time }} </p>
-                  <p> {{ cook.tools }}</p>
-                  <p> {{ cook.description }} </p>
+                </div>
+
+                  <p><i class="fas fa-book brown-text text-darken-4 prefix"></i> {{ cook.recipe_title }} </p>
+                  <p><i class="fas fa-egg brown-text text-darken-4 prefix"></i> {{ cook.ingredients }} </p>
+                  <p><i class="fas fa-hourglass-half brown-text text-darken-4 prefix"></i>{{ cook.cooking_time }} </p>
+                  <p><i  class="fas fa-bone brown-text text-darken-4 prefix"></i> {{ cook.tools }}</p>
+                  <p><i  class="fas fa-pencil-alt brown-text text-darken-4 prefix"></i> {{ cook.description }} </p>
                   <p><em>by: {{ cook.created_by }}</em></p>
-                </li>
-              </ul>
+
+              </li>
+            </ul>
+          </div>
+        
+        
               {% endfor %}
               </div>
             </div>
     {% endblock %}
+                 
              
                  
                   
