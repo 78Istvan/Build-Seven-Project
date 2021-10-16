@@ -4,11 +4,12 @@
         <div class=" extended">
            <img src="{{ url_for('static', filename='images/bbq-bg6.jpg') }}" class="bg">
         
-          
-           <div class="row col s12 m6 l3 offset-l2 center-align">
+          <div class="container">
+           <div class="row">
+           
               {% for cook in cooking %}
               
-              <div class="card row col l4 offset-l4 card-main">
+              <div class="card col s12 m6 l4 offset-l1 card-main">
             <ul>
               <li>
 
@@ -16,21 +17,31 @@
                   <span class="card-title">{{ cook.category_name }}</span>
                 </div>
 
-                  <p><i class="fas fa-book brown-text text-darken-4 prefix"></i> {{ cook.recipe_title }} </p>
-                  <p><i class="fas fa-egg brown-text text-darken-4 prefix"></i> {{ cook.ingredients }} </p>
-                  <p><i class="fas fa-hourglass-half brown-text text-darken-4 prefix"></i>{{ cook.cooking_time }} </p>
-                  <p><i  class="fas fa-bone brown-text text-darken-4 prefix"></i> {{ cook.tools }}</p>
-                  <p><i  class="fas fa-pencil-alt brown-text text-darken-4 prefix"></i> {{ cook.description }} </p>
-                  <p><em>by: {{ cook.created_by }}</em></p>
+                    <p><i class="fas fa-book brown-text text-darken-4 prefix"></i> {{ cook.recipe_title }} </p>
+                    <ul><i class="fas fa-egg brown-text text-darken-4 prefix"></i>
+                    {% for ingredient in cook.ingredients %}
+                    <li>{{ ingredient }} </li>
+                    {% endfor %}
+                    </ul>
+                    <p><i class="fas fa-hourglass-half brown-text text-darken-4 prefix"></i>{{ cook.cooking_time }} </p>
+                    <ul><i class="fas fa-bone brown-text text-darken-4 prefix"></i> 
+                    {% for tool in cook.tools %}
+                    <li>{{ tool }} </li>
+                    {% endfor %}
+                    </ul>
+                    <p><i  class="fas fa-pencil-alt brown-text text-darken-4 prefix"></i> {{ cook.description }} </p>
+                    <p><em>by: {{ cook.created_by }}</em></p>
+                    
+                  </li>
+                    </ul>
+                  </div>
 
-              </li>
-            </ul>
-          </div>
         
         
               {% endfor %}
               </div>
             </div>
+          </div>
     {% endblock %}
                  
              

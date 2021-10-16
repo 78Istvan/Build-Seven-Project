@@ -121,15 +121,15 @@ def add_recipe():
             "category_name": request.form.get("category_name"),
             "recipe_title": request.form.get("recipe_title"),
             "cooking_time": request.form.get("cooking_time"),
-            "tools": request.form.getlist("tools"),
-            "ingredients": request.form.getlist("ingredients"),
+            "tools": request.form.get("tools").split(","),
+            "ingredients": request.form.get("ingredients").split(","),
             "description": request.form.get("description"),
             "created_by": session["user"]
         }
         mongo.db.cooking.insert_one(recipe)
         flash("Recipe Successfully Created")
         return redirect(url_for("get_cooking"))
-    
+
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_recipe.html", categories=categories)
 
