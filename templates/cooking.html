@@ -3,28 +3,33 @@
         <div class=" extended">
            <img src="{{ url_for('static', filename='images/bbq-bg6.jpg') }}" class="bg">
     
-            </div>
-            <ul class="card s12 m8 l4">
-                {% for cook in cooking %}
-                <li>
-                    <div class="col s9">
-                      {{ cook.image_url }} 
-                    </div>
-                  </div>
-                <div>
-                    <p> {{ cook.category_name }} </p>
-                    <p> {{ cook.recipe_title }} </p>
-                    <p> {{ cook.ingredients }} </p>
-                    <p> {{ cook.cooking_time }} </p>
-                    <p> {{ cook.tools }}</p>
-                    <p> {{ cook.description }} </p>
-                    <p><em>by: {{ cook.created_by }}</em></p>
-                  </div>
-              </li>
+        </div>
+            <div class="row">
+              {% for cook in cooking %}
+              <div >
+                <ul class=" card col s12 m3 14">
+              <li>
+                  <span class="card-title">{{ cook.category_name }}</span>
+                  <p> {{ cook.category_name }} </p>
+                  <p> {{ cook.recipe_title }} </p>
+                  <p> {{ cook.ingredients }} </p>
+                  <p> {{ cook.cooking_time }} </p>
+                  <p> {{ cook.tools }}</p>
+                  <p> {{ cook.description }} </p>
+                  <p><em>by: {{ cook.created_by }}</em></p>
+                </li>
+              </ul>
               {% endfor %}
+              </div>
+            </div>
+    {% endblock %}
+             
+                 
+                  
+               
+          
+            
         
-          </ul>
-{% endblock %}
                     
                  
                      
