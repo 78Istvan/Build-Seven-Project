@@ -6,19 +6,20 @@
         
           
            <div class="container-fluid">
-            <div class="section">
+          
               <div class="row">
                 <div class="col s12 m4 card-main">
+                   
+            
               {% for cook in cooking %}
               
-             
-              <ul>
+         <ul class="card-main">
                <li>
                  <div class="card-category">
                    <span class="card-title">{{ cook.category_name }}</span>
                  </div>
 
-                 <p><i class="fas fa-book brown-text text-darken-4 prefix"></i> {{ cook.recipe_title }} </p>
+                 <p><i class="fas fa-book brown-text text-darken-4 prefix"></i> <strong>{{ cook.recipe_title }} </strong></p>
                  <ul><i class="fas fa-egg brown-text text-darken-4 prefix"></i>
                  {% for ingredient in cook.ingredients %}
                  <li>{{ ingredient }} </li>
@@ -37,15 +38,28 @@
                  <p><em>by: {{ cook.created_by }}</em></p>
                  
                </li>
-            </ul>
+              
+                  
+                    <div class="col s3">
+                      <i class="fas fa-caret-down"></i>
+                      {% if session.user|lower == cook.created_by|lower %}
+                      
+                      <a href="{{ url_for('edit_recipe',cook_id=cook._id) }}" class="btn-small brown ">Edit</a>
+                      {% endif %}
+                    </div>
+                   
+                  </div>
+              </div>
          
-       
+            </ul>
       {% endfor %}
+           
+    
       </div>
     </div>
   </div>
 </div>
-</div>
+
 
 {% endblock %}
               

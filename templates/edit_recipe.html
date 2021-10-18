@@ -2,7 +2,7 @@
 {% block content %}
 <div class="row account-head">
     <div class="col s12 m8 offset-m2">
-        <h4><span class="card-title brown-text center-align"><strong>Add Recipes</strong></span></h4>
+        <h4><span class="card-title brown-text center-align"><strong>Edit Recipes</strong></span></h4>
   </div>
 </div>
 <div class="row card-panel card-panel-form">
@@ -71,8 +71,9 @@
             <div class="row">
                 <div class="col s12 center-align">
                   <!--cancell button-->
+                  <a href="{{ url_for('delete_recipe',cook_id=cook._id) }}" class="btn-large green accent-4">Delete <i class="fas fa-trash-alt"></i></a>
                   <a href="{{ url_for('get_cooking') }}" class="href btn-large red text-shadow">
-                      Cancel <i class="fas fa-times-circle right"></i></a>
+                      Back <i class="fas fa-times-circle right"></i></a>
                   <button type="submit" class="btn-large light-blue darken-1 text-shadow">
                       Edit Recipe <i class="fas fa-edit right"></i>
                   </button>
