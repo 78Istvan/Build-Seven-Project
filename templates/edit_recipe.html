@@ -1,26 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-
-  <div class="row account-head">
+<div class="row account-head">
     <div class="col s12 m8 offset-m2">
-        <h4><span class="card-title brown-text center-align"><strong>Add Recepies</strong></span></h4>
+        <h4><span class="card-title brown-text center-align"><strong>Add Recipes</strong></span></h4>
   </div>
 </div>
 <div class="row card-panel card-panel-form">
-    <form class="col s12 new-form" method="POST" action="{{ url_for('add_recipe') }}">
+    <form class="col s12 new-form" method="POST"  action="{{ url_for('edit_recipe', cook_id=cook._id) }}">
         <!---image-->
         <div class="row col s12 offset-m2 m8 offset-l3 l6">
             <div class="input-field ">
                 <i class="far fa-images brown-text text-darken-4 prefix"></i>
-                <input id="img_url" name="img_url" type="url" class="validate" required>
+                <input id="img_url" name="img_url" type="url" class="validate" value="{{ cook.image_url }}" required>
                 <label for="img_url">Image URL</label>
                 </div>
             </div>
             <div class="row col s12 offset-m2 m8 offset-l3 l6">
                 <div class="input-field">
-                    <i class="fas fa-exchange-alt brown-text text-darken-4 prefix"></i>
+                    <i class="fas fa-exchange-alt brown-text text-darken-4 prefix"></i>S
                     <input id="category_name" name="category_name" type="text"
-                        class="validate" required>
+                        class="validate" value="{{ cook.category_name }}" required>
                     <label for="category_name">Category_name</label>
                     </div>
                 </div>
@@ -28,7 +27,7 @@
             <div class="input-field">
                 <i class="fas fa-book brown-text text-darken-4 prefix"></i>
                 <input id="recipe_title" name="recipe_title"  type="text"
-                    class="validate" required>
+                    class="validate" value="{{ cook.recipe_title }}" required>
                 <label for="recipe_title">Recipe_title</label>
                 </div>
             </div>
@@ -37,7 +36,9 @@
                 <div class="input-field">
                    <i class="fas fa-egg brown-text text-darken-4 prefix"></i>
                    <textarea id="ingredients" name="ingredients" 
-                          maxlength="500" class="materialize-textarea" required></textarea>
+                          maxlength="500" class="materialize-textarea" required>
+                          {{- cook.ingredients -}}
+                        </textarea>
                    <label for="ingredients">Ingredients</label>
                    <p class="small-text"><small>Use comma between ingredients!</small></p>
                 </div>
@@ -46,7 +47,7 @@
                 <div class="input-field">
                    <i class="far fa-clock brown-text text-darken-4 prefix"></i>
                    <textarea id="cooking_time" name="cooking_time" 
-                          class="materialize-textarea" required></textarea>
+                          class="materialize-textarea"  value="{{ cook.cooking_time }}" required></textarea>
                    <label for="cooking_time">Cooking Time</label>
                 </div>
             </div>
@@ -54,7 +55,7 @@
                 <div class="input-field">
                    <i  class="fas fa-bone brown-text text-darken-4 prefix"></i>
                    <textarea id="tools" name="tools" 
-                          class="materialize-textarea" required></textarea>
+                          class="materialize-textarea" value="{{ cook.tools }}"required></textarea>
                    <label for="tools">Tools</label>
                    <p class="small-text"><small>Use comma between ingredients!</small></p>
                 </div>
@@ -63,14 +64,17 @@
                 <div class="input-field">
                    <i  class="fas fa-pencil-alt brown-text text-darken-4 prefix"></i>
                    <textarea id="description" name="description" 
-                    minlenght="5" class="materialize-textarea" required></textarea>
+                    minlenght="5" class="materialize-textarea" value="{{ cook.decription }}"required></textarea>
                    <label for="description">Description</label>
                 </div>
             </div>
             <div class="row">
                 <div class="col s12 center-align">
-                  <button type="submit" class="btn-large brown darken-1 text-shadow">
-                      Submit <i class="fas fa-plus-square right prefix"></i>
+                  <!--cancell button-->
+                  <a href="{{ url_for('get_cooking') }}" class="href btn-large red text-shadow">
+                      Cancel <i class="fas fa-times-circle right"></i></a>
+                  <button type="submit" class="btn-large light-blue darken-1 text-shadow">
+                      Edit Recipe <i class="fas fa-edit right"></i>
                   </button>
                 </div>
             </div>

@@ -116,7 +116,7 @@ def account():
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
     if request.method == "POST":
-        recipe = {
+        cook = {
             "image_url": request.form.get("image_url"),
             "category_name": request.form.get("category_name"),
             "recipe_title": request.form.get("recipe_title"),
@@ -126,13 +126,35 @@ def add_recipe():
             "description": request.form.get("description"),
             "created_by": session["user"]
         }
-        mongo.db.cooking.insert_one(recipe)
+        mongo.db.cooking.insert_one(cook)
         flash("Recipe Successfully Created")
         return redirect(url_for("get_cooking"))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_recipe.html", categories=categories)
 
+
+@app.route("/edit_recipe/<cook_id>", methods=["GET", "POST"])
+def edit_recipe(cook_id):
+    if request.method == "POST":
+     
+        update = {
+            "image_url": request.form.get("image_url"),
+            "category_name": request.form.get("category_name"),
+            "recipe_title": request.form.get("recipe_title"),
+            "cooking_time": request.form.get("cooking_time"),
+            "tools": request.form.get("tools").split(","),
+            "ingredients": request.form.get("ingredients").split(","),
+            "description": request.form.get("description"),
+            "created_by": session["user"]
+        }
+        mongo.db.cooking.update({"_id": ObjectId(cook_id)}, update)
+        flash("Recipe Successfully Updated")
+      
+    cook = mongo.db.cooking.find_one({"_id": ObjectId(cook_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("edit_recipe.html"
+    , cook=cook, categories=categories)
 
 
 if __name__ == "__main__":
