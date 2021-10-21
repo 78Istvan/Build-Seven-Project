@@ -46,16 +46,16 @@
             <div class="row row col s12 offset-m2 m8 offset-l3 l6 ">
                 <div class="input-field">
                    <i class="far fa-clock brown-text text-darken-4 prefix"></i>
-                   <textarea id="cooking_time" name="cooking_time" 
-                          class="materialize-textarea"  value="{{ cook.cooking_time }}" required></textarea>
+                   <input id="cooking_time" name="cooking_time"  type="text"
+                   class="validate" value="{{ cook.cooking_time }}" required>
                    <label for="cooking_time">Cooking Time</label>
                 </div>
             </div>
             <div class="row row col s12 offset-m2 m8 offset-l3 l6 ">
                 <div class="input-field">
                    <i  class="fas fa-bone brown-text text-darken-4 prefix"></i>
-                   <textarea id="tools" name="tools" 
-                          class="materialize-textarea" value="{{ cook.tools }}"required></textarea>
+                   <input id="tools" name="tools"  type="text"
+                   class="validate" value="{{ cook.tools }}" required>
                    <label for="tools">Tools</label>
                    <p class="small-text"><small>Use comma between ingredients!</small></p>
                 </div>
@@ -64,7 +64,9 @@
                 <div class="input-field">
                    <i  class="fas fa-pencil-alt brown-text text-darken-4 prefix"></i>
                    <textarea id="description" name="description" 
-                    minlenght="5" class="materialize-textarea" value="{{ cook.decription }}"required></textarea>
+                    minlenght="5" class="materialize-textarea" value="{{ cook.decription }}"required>
+                    {{- cook.description -}}
+                </textarea>
                    <label for="description">Description</label>
                 </div>
             </div>

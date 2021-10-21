@@ -4,64 +4,74 @@
         <div class=" extended">
            <img src="{{ url_for('static', filename='images/bbq-bg6.jpg') }}" class="bg">
         
-          
-           <div class="container-fluid">
+          </div>
+           
           
               <div class="row">
-                <div class="col s12 m4 card-main">
+                {% for cook in cooking %}
+                <div class="col s12 m6">
+                  <div class="card card-main sticky-action white-transparent">
+                      <div class="card-content">
+                          <div class="card-title grey-text text-darken-4">
+                            <div class="card-category">
+                              <span class="card-title">{{ cook.category_name }}</span>
+                            </div>
+                              <div class="row">
+                            <p><i class="fas fa-book brown-text text-darken-4 prefix"></i> <strong>{{ cook.recipe_title }} </strong></p>
+                          </div>
+                            <div class="row">
+                            <ul><i class="fas fa-egg brown-text text-darken-4 prefix"></i>
+                            {% for ingredient in cook.ingredients %}
+                            <li>{{ ingredient }} </li>
+                            {% endfor %}
+                            </ul>
+                          </div>
+                          <div class="row">
+                            <p><i class="fas fa-hourglass-half brown-text text-darken-4 prefix"></i>{{ cook.cooking_time }} </p>
+                          </div>
+                          <div class="row">
+                            <ul><i class="fas fa-bone brown-text text-darken-4 prefix"></i>
+                            {% for tool in cook.tools %}
+                            <li>{{ tool }} </li>
+                            {% endfor %}
+                            </ul>
+                          </div>
+                          <div class="row">
+                            <p><i  class="fas fa-pencil-alt brown-text text-darken-4 prefix"></i> {{ cook.description }} </p>
+                            </div>
+                            <p><em>by: {{ cook.created_by }}</em></p>
+                            <div class="col s3">
+                              {% if session.user|lower == cook.created_by|lower %}
+                              <a href="{{ url_for('edit_recipe',cook_id=cook._id) }}" class="btn-small brown ">Edit</a>
+                              {% endif %}
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                    {% endfor %}
+                  </div>
+                
+{% endblock %}
+                
+                
+                         
+                  
+                              
+                           
+                             
+                            
+                               
+               
                    
             
-              {% for cook in cooking %}
-              
-         <ul class="card-main">
-               <li>
-                 <div class="card-category">
-                   <span class="card-title">{{ cook.category_name }}</span>
-                 </div>
-
-                 <p><i class="fas fa-book brown-text text-darken-4 prefix"></i> <strong>{{ cook.recipe_title }} </strong></p>
-                 <ul><i class="fas fa-egg brown-text text-darken-4 prefix"></i>
-                 {% for ingredient in cook.ingredients %}
-                 <li>{{ ingredient }} </li>
-                 {% endfor %}
-                 </ul>
-                 <p><i class="fas fa-hourglass-half brown-text text-darken-4 prefix"></i>{{ cook.cooking_time }} </p>
+                            
+                            
+                          
+                          
                   
-                 <ul><i class="fas fa-bone brown-text text-darken-4 prefix"></i>
-                 {% for tool in cook.tools %}
-                 
-                 <li>{{ tool }} </li>
-                 {% endfor %}
-                 </ul>
-                
-                 <p><i  class="fas fa-pencil-alt brown-text text-darken-4 prefix"></i> {{ cook.description }} </p>
-                 <p><em>by: {{ cook.created_by }}</em></p>
-                 
-               </li>
-              
-                  
-                    <div class="col s3">
-                      <i class="fas fa-caret-down"></i>
-                      {% if session.user|lower == cook.created_by|lower %}
-                      
-                      <a href="{{ url_for('edit_recipe',cook_id=cook._id) }}" class="btn-small brown ">Edit</a>
-                      {% endif %}
-                    </div>
-                   
-                  </div>
-              </div>
          
-            </ul>
-      {% endfor %}
            
-    
-      </div>
-    </div>
-  </div>
-</div>
-
-
-{% endblock %}
               
                 
            
