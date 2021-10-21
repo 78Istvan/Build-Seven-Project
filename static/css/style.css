@@ -73,3 +73,13 @@ body, html {
 .small-text {
     text-align: center;
 }
+
+.btn-large {
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+.card-content-p {
+    text-align: center;
+    padding-top: 20px;
+}

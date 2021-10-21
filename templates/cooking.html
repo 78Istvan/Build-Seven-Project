@@ -9,15 +9,15 @@
           
               <div class="row">
                 {% for cook in cooking %}
-                <div class="col s12 m6">
-                  <div class="card card-main sticky-action white-transparent">
+                <div class="col s12 m12">
+                  <div class="card card-main sticky-action brown-transparent">
                       <div class="card-content">
                           <div class="card-title grey-text text-darken-4">
                             <div class="card-category">
                               <span class="card-title">{{ cook.category_name }}</span>
                             </div>
                               <div class="row">
-                            <p><i class="fas fa-book brown-text text-darken-4 prefix"></i> <strong>{{ cook.recipe_title }} </strong></p>
+                            <p class="card-content-p"><i class="fas fa-book brown-text text-darken-4 prefix align-center"></i> <strong>{{ cook.recipe_title }} </strong></p>
                           </div>
                             <div class="row">
                             <ul><i class="fas fa-egg brown-text text-darken-4 prefix"></i>
@@ -40,9 +40,10 @@
                             <p><i  class="fas fa-pencil-alt brown-text text-darken-4 prefix"></i> {{ cook.description }} </p>
                             </div>
                             <p><em>by: {{ cook.created_by }}</em></p>
-                            <div class="col s3">
+                           <div class="row">
+                           
                               {% if session.user|lower == cook.created_by|lower %}
-                              <a href="{{ url_for('edit_recipe',cook_id=cook._id) }}" class="btn-small brown ">Edit</a>
+                              <a href="{{ url_for('edit_recipe',cook_id=cook._id) }}" class="btn-large brown align-center">Edit</a>
                               {% endif %}
                             </div>
                           </div>
