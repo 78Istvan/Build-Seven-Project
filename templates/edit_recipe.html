@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="row account-head">
-    <div class="col s12 m8 offset-m2">
+    <div class="col s12 m6 offset-m2">
         <h4><span class="card-title brown-text center-align"><strong>Edit Recipes</strong></span></h4>
   </div>
 </div>
@@ -27,7 +27,7 @@
             <div class="input-field">
                 <i class="fas fa-book brown-text text-darken-4 prefix"></i>
                 <input id="recipe_title" name="recipe_title"  type="text"
-                    class="validate" value="{{ cook.recipe_title }}" required>
+                    class="validate" maxlength="18" value="{{ cook.recipe_title }}" required>
                 <label for="recipe_title">Recipe_title</label>
                 </div>
             </div>

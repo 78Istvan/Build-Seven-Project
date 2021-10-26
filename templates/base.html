@@ -23,7 +23,7 @@
             <li><a href="{{ url_for('get_cooking') }}">Home</a></li>
             {% if session.user %}
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                <li><a href="{{ url_for('account') }}">Manage Account</a></li> 
+                <li><a href="{{ url_for('account') }}">New Recipes</a></li> 
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% else %}
                 <li><a href="{{ url_for('login') }}">Log In</a></li>
@@ -38,7 +38,7 @@
                   <li class="active"><a href="{{ url_for('get_cooking') }}">Home</a></li>
             {% if session.user %}
                   <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                  <li><a href="{{ url_for('account') }}">Manage Account</a></li> 
+                  <li><a href="{{ url_for('account') }}">New Recipes</a></li> 
                   <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% else %}
                   <li><a href="{{ url_for('login') }}">Log In</a></li>
@@ -52,14 +52,14 @@
             {% if messages %}
                 {% for message in messages %}
                     <div class="row flashes">
-                        <div class="h4 center-align l6 brown lighten-1 offset-m2">{{ message  }}</div>
+                        <div class="h4 s12 m6 center-align l6 brown lighten-1 ">{{ message  }}</div>
                     </div>
                 {% endfor %}
             {% endif %}
         {% endwith %}
       </section>
 
-      <main class="container">
+      <main class="countainer">
           {% block content %}
           {% endblock %}
 

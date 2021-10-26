@@ -1,59 +1,91 @@
 {% extends "base.html" %}
 {% block content %}
-
+          <!--background image-->
         <div class=" extended">
            <img src="{{ url_for('static', filename='images/bbq-bg6.jpg') }}" class="bg">
+        </div>
         
-          </div>
-           
-          
-              <div class="row">
-                {% for cook in cooking %}
-                <div class="col s12 m12">
-                  <div class="card card-main sticky-action brown-transparent">
-                      <div class="card-content">
-                          <div class="card-title grey-text text-darken-4">
-                            <div class="card-category">
-                              <span class="card-title">{{ cook.category_name }}</span>
-                            </div>
-                              <div class="row">
-                            <p class="card-content-p"><i class="fas fa-book brown-text text-darken-4 prefix align-center"></i> <strong>{{ cook.recipe_title }} </strong></p>
-                          </div>
-                            <div class="row">
-                            <ul><i class="fas fa-egg brown-text text-darken-4 prefix"></i>
-                            {% for ingredient in cook.ingredients %}
-                            <li>{{ ingredient }} </li>
-                            {% endfor %}
+        <div class="row cookin-row">
+                      {% for cook in cooking %}
+                      
+                      <div class="col s12 m6 l4 xl3">
+                     
+                  <div class="card">
+
+                    <div class="card-image waves-effect waves-block waves-light">
+                      <img class="activator" src="{{ url_for('static', filename='images/recipe-img1.jpg') }}" >
+                    </div>
+                      <!--recipe title, and 3dots icon-->
+                    <div class="card-content">
+                      <span class="card-title activator grey-text text-darken-4">{{ cook.recipe_title }} <i class="fas fa-ellipsis-v right"></i></span>
+                    </div>
+                    <!--close x icon-->
+                    <div class="card-reveal">
+                      <span class="card-title grey-text text-darken-4"><i class="fas fa-times white-text right"></i></span>
+                   <!--category name in recipe-->
+                      <div class="row">
+                        <div class="card-category">
+                          <span class="card-title">{{ cook.category_name }}</span>
+                        </div>
+                      </div>
+                        <!--recipe title in reveal card-->
+                      <div class="row">
+                        <p class="card-content-p"><strong> {{ cook.recipe_title }} </strong></p>
+                      </div>
+                      <!--ingredients section-->
+                          <div class="row">
+                            <ul> <p class="prefix ingred"> Ingredients:</p>
+                                {% for ingredient in cook.ingredients %}
+                              <li>{{ ingredient }} </li>
+                                {% endfor %}
+                                  Ingredients</p>
                             </ul>
                           </div>
+                          <!--cooking time section-->
                           <div class="row">
-                            <p><i class="fas fa-hourglass-half brown-text text-darken-4 prefix"></i>{{ cook.cooking_time }} </p>
+                            <p class="prefix ingred">Cooking time: </p>{{ cook.cooking_time }}
                           </div>
+                          <!--cooking tools-->
                           <div class="row">
-                            <ul><i class="fas fa-bone brown-text text-darken-4 prefix"></i>
+                            <ul><p class="prefix ingred">Tools:</p>
                             {% for tool in cook.tools %}
                             <li>{{ tool }} </li>
                             {% endfor %}
                             </ul>
                           </div>
+                         <!--recipe description-->
                           <div class="row">
-                            <p><i  class="fas fa-pencil-alt brown-text text-darken-4 prefix"></i> {{ cook.description }} </p>
-                            </div>
-                            <p><em>by: {{ cook.created_by }}</em></p>
-                           <div class="row">
-                           
-                              {% if session.user|lower == cook.created_by|lower %}
-                              <a href="{{ url_for('edit_recipe',cook_id=cook._id) }}" class="btn-large brown align-center">Edit</a>
-                              {% endif %}
-                            </div>
+                            <p class="prefix ingred">Description:</p> {{ cook.description }}
                           </div>
-                      </div>
-                    </div>
-                  </div>
-                    {% endfor %}
-                  </div>
-                
-{% endblock %}
+                          <!--recipe creator-->
+                          <div class="row">
+                              <p class="center-align"><em>Created by: {{ cook.created_by }}</em></p>
+                          </div>
+                          <!--edit button in sesion user account-->
+                          <div class="row">
+                            {% if session.user|lower == cook.created_by|lower %}
+                            <a href="{{ url_for('edit_recipe', cook_id=cook._id) }}" class="btn-large brown center-align">Edit</a>
+                            {% endif %}
+                           </div>
+                           
+                         </div> 
+                       </div>
+                     </div>
+         {% endfor %}
+          
+       </div>
+       
+ {% endblock %}
+           
+
+         
+          
+                          
+                           
+                         
+                         
+   
+                          
                 
                 
                          

@@ -42,7 +42,8 @@ body, html {
     }
     
 .card .card-content {
-    background:rgba(255,255,255, 0.4);
+    background:rgba(255, 250, 250, 0.3);
+
     margin-top: 35px;
     border-radius: 10px;
 }
@@ -63,7 +64,7 @@ body, html {
 }
 
 .card-main {
-    background-color: #e6d2a7;
+    background-color: rgba(180, 136, 60, 0.8)
 }
 
 .card .card-title {
@@ -82,4 +83,33 @@ body, html {
 .card-content-p {
     text-align: center;
     padding-top: 20px;
+    color: #000000;
+}
+
+.row-card {
+    width: 100%;
+}
+
+.ingred {
+    color: #000000;
+    font-size: larger;
+    text-decoration: underline;
+  
+}
+
+.card .card-content p {
+    margin-bottom: 25px;
+}
+
+.col .row {
+    margin-left: 10px
+}
+
+strong {
+    font-size: 25px;
+    text-decoration: underline;
+}
+
+.cookin-row {
+    margin-top: 25px;
 }
