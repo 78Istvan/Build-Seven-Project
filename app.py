@@ -117,7 +117,7 @@ def account():
 def add_recipe():
     if request.method == "POST":
         cook = {
-            "image_url": request.form.get("image_url"),
+            "img_url": request.form.get("img_url"),
             "category_name": request.form.get("category_name"),
             "recipe_title": request.form.get("recipe_title"),
             "cooking_time": request.form.get("cooking_time"),
@@ -139,7 +139,7 @@ def edit_recipe(cook_id):
     if request.method == "POST":
      
         update = {
-            "image_url": request.form.get("image_url"),
+            "img_url": request.form.get("img_url"),
             "category_name": request.form.get("category_name"),
             "recipe_title": request.form.get("recipe_title"),
             "cooking_time": request.form.get("cooking_time"),
@@ -162,6 +162,22 @@ def delete_recipe(cook_id):
     mongo.db.cooking.remove({"_id": ObjectId(cook_id)})
     flash("Recipe Successfully Deleted")
     return redirect(url_for("get_cooking"))
+
+
+@app.route("/admin")
+def admin():
+    if "user" in session:
+        current_user = mongo.db.users.find_one({"_id": ObjectId()})
+        admin_user = mongo.db.cooking.find_one({"added_by": "user"})
+        if current_user == admin_user:
+            all_cooking = mongo.db.cooking.find()
+            return render_template("admin.html", cooking=all_cooking)
+        else:
+            flash("You are not authorise to perform this action")
+            return redirect(url_for("login"))
+    else:
+        flash("You must be logged in to view this page")
+        return redirect(url_for("login"))
 
 
 if __name__ == "__main__":

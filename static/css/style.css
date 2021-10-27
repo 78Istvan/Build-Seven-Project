@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
 
+html{
+    overflow-x: hidden;
+}
+
+body{
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    overflow-x: hidden;
+    position: relative;
+    height: 100%;
+}
 nav ul a {
     color: 000;
 }
@@ -112,4 +126,15 @@ strong {
 
 .cookin-row {
     margin-top: 25px;
+}
+/*--card images--*/
+img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-img {
+    height: 350px;
+    padding: 0;
 }
