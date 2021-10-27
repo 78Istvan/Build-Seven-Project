@@ -138,3 +138,9 @@ img{
     height: 350px;
     padding: 0;
 }
+
+/*--flash text--*/
+.flash {
+    color: #ffffff;
+    font-size: larger;
+}
