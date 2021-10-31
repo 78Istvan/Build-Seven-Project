@@ -174,7 +174,7 @@ def admin():
         return redirect(url_for("login"))
 
 
-# delete, update functions
+# create, update, delete function
 @app.route("/recipe/<cook_id>", methods=["GET", "UPDATE", "DELETE"])
 @app.route("/recipe", methods=["POST"])
 def manage_recipe(cook_id=None):
