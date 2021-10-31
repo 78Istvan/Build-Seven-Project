@@ -6,6 +6,7 @@ from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
+from flask import jsonify
 
 
 app = Flask(__name__)
@@ -131,7 +132,7 @@ def add_recipe():
         return redirect(url_for("get_cooking"))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("add_recipe.html", categories=categories)
+    return render_template("add_recipes.html", categories=categories)
 
 
 @app.route("/edit_recipe/<cook_id>", methods=["GET", "POST"])
@@ -157,13 +158,6 @@ def edit_recipe(cook_id):
     , cook=cook, categories=categories)
 
 
-@app.route("/delete_recipe/<cook_id>")
-def delete_recipe(cook_id):
-    mongo.db.cooking.remove({"_id": ObjectId(cook_id)})
-    flash("Recipe Successfully Deleted")
-    return redirect(url_for("get_cooking"))
-
-
 @app.route("/admin")
 def admin():
     if "user" in session:
@@ -178,6 +172,60 @@ def admin():
     else:
         flash("You must be logged in to view this page")
         return redirect(url_for("login"))
+
+
+# delete, update functions
+@app.route("/recipe/<cook_id>", methods=["GET", "UPDATE", "DELETE"])
+@app.route("/recipe", methods=["POST"])
+def manage_recipe(cook_id=None):
+    print(request.method)
+    cats = mongo.db.categories.find().sort("category_name", 1)
+    if request.method == "GET":
+        cook = mongo.db.cooking.find_one({"_id": ObjectId(cook_id)})
+        return render_template("edit_recipe.html", cook=cook, cats=cats)
+
+    if request.method == "POST":
+        print("image_url: " + str(request.form.get("image_url")))
+        cook = {
+            "image_url": request.form.get("image_url"),
+            "category_name": request.form.get("category_name"),
+            "recipe_title": request.form.get("recipe_title"),
+            "cooking_time": request.form.get("cooking_time"),
+            "tools": request.form.get("tools").split(","),
+            "ingredients": request.form.get("ingredients").split(","),
+            "description": request.form.get("description"),
+            "created_by": session["user"]
+        }
+        mongo.db.cooking.insert_one(cook)
+        flash("Recipe Successfully Created")
+        return redirect(url_for("get_cooking"))
+#
+    if request.method == "UPDATE":
+     
+        update = {
+            "image_url": request.form.get("image_url"),
+            "category_name": request.form.get("category_name"),
+            "recipe_title": request.form.get("recipe_title"),
+            "cooking_time": request.form.get("cooking_time"),
+            "tools": request.form.get("tools").split(","),
+            "ingredients": request.form.get("ingredients").split(","),
+            "description": request.form.get("description"),
+            "created_by": session["user"]
+        }
+        mongo.db.cooking.update({"_id": ObjectId(cook_id)}, update)
+        flash("Recipe Successfully Edited")
+
+        cook = mongo.db.cooking.find_one({"_id": ObjectId(cook_id)})
+        return render_template("edit_recipe.html", cook=cook, cats=cats)
+# delete section
+    if request.method == "DELETE":
+        mongo.db.cooking.remove({"_id": ObjectId(cook_id)})
+        flash("Recipe Successfully Deleted")
+        resp = jsonify(success=True)
+        resp.status_code = 200
+        return resp
+        
+
 
 
 if __name__ == "__main__":
