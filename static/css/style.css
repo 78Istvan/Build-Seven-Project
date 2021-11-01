@@ -14,6 +14,7 @@ body{
     position: relative;
     height: 100%;
 }
+/* navbar */
 nav ul a {
     color: 000;
 }
@@ -36,12 +37,7 @@ a {
     color: #ffffff;
     margin-left: 0.5rem;
 }
-
-body, html {
-    height: 100%;
-    margin: 0;
-  }
-  
+/* background img */
 .bg {
       position: fixed;
       top: 0;
@@ -61,15 +57,15 @@ body, html {
     margin-top: 35px;
     border-radius: 10px;
 }
-
+/* mobile navbar */
 .sidenav {
     background-color: #e6d2a7;
 }
-
+/* account html header text */
 .account-head {
     text-align: center;
 }
-
+/* recipe card */
 .card-category {
     font-size: large;
     color:#ffffff;
@@ -142,5 +138,6 @@ img{
 /*--flash text--*/
 .flash {
     color: #ffffff;
-    font-size: larger;
+    font-size: 25px;
+
 }

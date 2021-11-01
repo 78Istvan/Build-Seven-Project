@@ -109,9 +109,9 @@ def logout():
     return redirect(url_for("get_cooking"))
 
 
-@app.route("/account")
-def account():
-    return render_template("account.html")
+@app.route("/new_recipe")
+def new_recipe():
+    return render_template("new_recipe.html")
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])
@@ -150,7 +150,7 @@ def edit_recipe(cook_id):
             "created_by": session["user"]
         }
         mongo.db.cooking.update({"_id": ObjectId(cook_id)}, update)
-        flash("Recipe Successfully Edited")
+        flash("Recipe Successfully Updated")
 
     cook = mongo.db.cooking.find_one({"_id": ObjectId(cook_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
@@ -207,7 +207,7 @@ def manage_recipe(cook_id=None):
             "created_by": session["user"]
         }
         mongo.db.cooking.update({"_id": ObjectId(cook_id)}, update)
-        flash("Recipe Successfully Edited")
+        flash("Recipe Successfully Updated")
 
         cook = mongo.db.cooking.find_one({"_id": ObjectId(cook_id)})
         return render_template("edit_recipe.html", cook=cook, cats=cats)
