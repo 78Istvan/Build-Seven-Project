@@ -1,6 +1,7 @@
 $(document).ready(function(){
     $('.sidenav').sidenav({edge: "right"});
   });
+  
 // delete function url 
 function myFunction(id) {
   var id=$('input.recepy-id').val(),

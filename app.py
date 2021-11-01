@@ -138,7 +138,7 @@ def add_recipe():
 @app.route("/edit_recipe/<cook_id>", methods=["GET", "POST"])
 def edit_recipe(cook_id):
     if request.method == "POST":
-     
+
         update = {
             "img_url": request.form.get("img_url"),
             "category_name": request.form.get("category_name"),
@@ -166,12 +166,6 @@ def admin():
         if current_user == admin_user:
             all_cooking = mongo.db.cooking.find()
             return render_template("admin.html", cooking=all_cooking)
-        else:
-            flash("You are not authorise to perform this action")
-            return redirect(url_for("login"))
-    else:
-        flash("You must be logged in to view this page")
-        return redirect(url_for("login"))
 
 
 # create, update, delete function
@@ -183,7 +177,7 @@ def manage_recipe(cook_id=None):
     if request.method == "GET":
         cook = mongo.db.cooking.find_one({"_id": ObjectId(cook_id)})
         return render_template("edit_recipe.html", cook=cook, cats=cats)
-
+# create recipe section
     if request.method == "POST":
         print("image_url: " + str(request.form.get("image_url")))
         cook = {
@@ -199,9 +193,9 @@ def manage_recipe(cook_id=None):
         mongo.db.cooking.insert_one(cook)
         flash("Recipe Successfully Created")
         return redirect(url_for("get_cooking"))
-#
+# update section
     if request.method == "UPDATE":
-     
+
         update = {
             "image_url": request.form.get("image_url"),
             "category_name": request.form.get("category_name"),
@@ -224,8 +218,6 @@ def manage_recipe(cook_id=None):
         resp = jsonify(success=True)
         resp.status_code = 200
         return resp
-        
-
 
 
 if __name__ == "__main__":

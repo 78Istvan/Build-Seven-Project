@@ -63,8 +63,10 @@
                           </div>
                           <!--edit button in sesion user account-->
                           <div class="row">
-                            {% if session.user|lower == cook.created_by|lower %}
+                            {% if session.user|lower == cook.created_by|lower, "admin"|lower %}
+                             
                             <a href="{{ url_for('edit_recipe', cook_id=cook._id) }}" class="btn-large brown center-align">Edit</a>
+                              
                             {% endif %}
                            </div>
                            
