@@ -16,11 +16,11 @@ body{
 }
 /* navbar */
 nav ul a {
-    color: 000;
+    color: #fff;
 }
 
 nav .brand-logo.left {
-    color: 0000;
+    color: #fff;
 }
 
 .btn, .btn-large, .btn-small {
@@ -140,4 +140,24 @@ img{
     color: #ffffff;
     font-size: 25px;
 
+}
+
+/*serch bar */
+#search-bar {
+    color: #ffffff;
+    font-size: larger;
+}
+
+.search-bar-bg{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+form input {
+    color: white;
+}
+
+/* cooking head text */
+.cooking-head-txt {
+    font-size: 5rem;
+    font-family: 'Zen Kurenaido', sans-serif;
 }

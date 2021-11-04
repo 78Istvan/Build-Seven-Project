@@ -219,6 +219,14 @@ def manage_recipe(cook_id=None):
         resp.status_code = 200
         return resp
 
+# search function
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    cooking = list(mongo.db.cooking.find({"$text": {"$search": query }}))
+    return render_template("cooking.html", cooking=cooking)
+
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
