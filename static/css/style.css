@@ -142,7 +142,7 @@ img{
 
 }
 
-/*serch bar */
+/* serch bar */
 #search-bar {
     color: #ffffff;
     font-size: larger;
@@ -160,4 +160,17 @@ form input {
 .cooking-head-txt {
     font-size: 5rem;
     font-family: 'Zen Kurenaido', sans-serif;
+}
+
+/* social icons */
+ul li {
+    display:inline;
+}
+
+.s-icon {
+    font-size: 22px;
+}
+
+.s-icon-all {
+    text-align: right;
 }
