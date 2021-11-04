@@ -37,7 +37,9 @@
                    <i class="fas fa-egg brown-text text-darken-4 prefix"></i>
                    <textarea id="ingredients" name="ingredients" 
                           maxlength="500" class="materialize-textarea" required>
-                          {{- cook.ingredients -}}
+                          {% for ingredient in cook.ingredients %}
+                          {{- ingredient ~ "," -}} 
+                            {% endfor %}
                         </textarea>
                    <label for="ingredients">Ingredients</label>
                    <p class="small-text"><small>Use comma between ingredients!</small></p>
@@ -54,8 +56,12 @@
             <div class="row row col s12 offset-m2 m8 offset-l3 l6 ">
                 <div class="input-field">
                    <i  class="fas fa-bone brown-text text-darken-4 prefix"></i>
-                   <input id="tools" name="tools"  type="text"
-                   class="validate" value="{{ cook.tools }}" required>
+                   <textarea id="tools" name="tools"  
+                    maxlength="500" class="materialize-textarea" required>
+                  {% for tool in cook.tools %}
+                  {{- tool ~ "," -}}, 
+                  {% endfor %} 
+                   </textarea>
                    <label for="tools">Tools</label>
                    <p class="small-text"><small>Use comma between ingredients!</small></p>
                 </div>

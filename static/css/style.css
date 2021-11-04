@@ -13,7 +13,12 @@ body{
     overflow-x: hidden;
     position: relative;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
+main {
+    flex: 1 0 auto;
+  }
 /* navbar */
 nav ul a {
     color: #fff;
@@ -26,7 +31,6 @@ nav .brand-logo.left {
 .btn, .btn-large, .btn-small {
     background-color: chocolate;
     margin-bottom: 40px;
-
 }
 
 .in-icon {
@@ -37,6 +41,7 @@ a {
     color: #ffffff;
     margin-left: 0.5rem;
 }
+
 /* background img */
 .bg {
       position: fixed;
@@ -57,14 +62,17 @@ a {
     margin-top: 35px;
     border-radius: 10px;
 }
+
 /* mobile navbar */
 .sidenav {
     background-color: #e6d2a7;
 }
+
 /* account html header text */
 .account-head {
     text-align: center;
 }
+
 /* recipe card */
 .card-category {
     font-size: large;
@@ -125,6 +133,7 @@ strong {
 .cookin-row {
     margin-top: 25px;
 }
+
 /*--card images--*/
 img{
     height: 100%;
@@ -149,22 +158,25 @@ img{
     color: #ffffff;
     font-size: larger;
 }
-
+form .search-field input {
+    color: #ffffff;
+}
 .search-bar-bg{
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-/*.search-input {
-    color: #ffffff;
-}
-*/
+
 /* cooking head text */
 .cooking-head-txt {
     font-size: 5rem;
     font-family: 'Zen Kurenaido', sans-serif;
 }
 
-/* social icons */
+/* social icons / footer */
+footer {
+    
+}
+
 ul li {
     display:inline;
 }
@@ -193,4 +205,9 @@ ul li {
 .rating__star:hover {
     filter: drop-shadow(1px 1px 4px gold);
  }
+
+/* tumb up button rating */
+.tumb-up {
+    margin-left: 15px;
+}
 
