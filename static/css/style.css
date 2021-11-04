@@ -110,7 +110,9 @@ a {
 .card .card-content p {
     margin-bottom: 25px;
 }
-
+.card .card-content {
+    padding-bottom: 15px;
+}
 .col .row {
     margin-left: 10px
 }
@@ -152,10 +154,10 @@ img{
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-form input {
-    color: white;
+/*.search-input {
+    color: #ffffff;
 }
-
+*/
 /* cooking head text */
 .cooking-head-txt {
     font-size: 5rem;
@@ -174,3 +176,21 @@ ul li {
 .s-icon-all {
     text-align: right;
 }
+
+/* rating stars */
+.rating {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.rating__star {
+    font-size: 1.3em;
+    cursor: pointer;
+    color: #dabd18b2;
+    transition: filter linear .3s;
+ }
+ 
+.rating__star:hover {
+    filter: drop-shadow(1px 1px 4px gold);
+ }
+
