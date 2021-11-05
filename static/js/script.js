@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $('.sidenav').sidenav({edge: "right"});
+    $('select').formSelect();
   });
   
 // delete function 
@@ -20,7 +21,7 @@ function deleteRecipe(id) {
 
 }
 // update function 
-function deleteRecipe(id) {
+function updateRecipe(id) {
   var id=$('input.recepy-id').val(),
   base_url = new URL('/', location.href).href,
   url = base_url +"/recipe/" + id;

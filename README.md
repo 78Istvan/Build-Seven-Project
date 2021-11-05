@@ -213,12 +213,6 @@ To work on the project code within a local IDE such as VSCode, Pycharm etc:
 
 ## Acknowledgements
 
-I am really sorry that I can't finished my project before my deadline.
-Unfortunately my family conditions are changed and I just could't spend enough time to put everything together.
-After this submission I will continoue working on my project and I will resubmit the 
-[BBqFun](https://flask-food-selection.herokuapp.com/) page with all the functionalities, and design as a proper project should be.
-- Istvan Juhasz 
-
 
 
 
