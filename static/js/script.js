@@ -1,6 +1,7 @@
 $(document).ready(function(){
     $('.sidenav').sidenav({edge: "right"});
     $('select').formSelect();
+    $('.modal').modal();
   });
   
 // delete function 
@@ -38,6 +39,3 @@ function updateRecipe(id) {
 
 }
 
-function ratingLike() {
-  console.log("hello")
-}

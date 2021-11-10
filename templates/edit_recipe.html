@@ -79,10 +79,26 @@
             <div class="row">
                 <div class="col s12 center-align">
                 
-                    <!--delete button-->
-                  <a onclick="deleteRecipe()" href="#" class="btn-large green accent-4">Delete <i class="fas fa-trash-alt"></i></a>
-                  <input class="recepy-id" type="hidden" value="{{cook._id}}" />
-                  
+                    <!--delete button with modal-->
+                    <div id="modal1" class="modal">
+                        <div class="modal-content">
+                          <h5>Do you really want to delete this recipe? </h5>
+                          <p>This process cannot be undone.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a onclick="deleteRecipe()" class=" btn  waves-effect waves-green btn-large green accent-4">Delete <i class="fas fa-trash-alt"></i></a>
+
+                        <input class="recepy-id" type="hidden" value="{{cook._id}}" />
+                        <a href="#!" class="modal-close waves-effect btn-large red text-shadow">Back <i class="fas fa-times-circle right"></i></a>
+                        </div>
+                        
+                            
+                          
+                      
+                     </div>
+                      <a  href="modal1" data-target="modal1" 
+                      class="modal-close btn modal-trigger waves-effect waves-green btn-large green accent-4">Delete <i class="fas fa-trash-alt"></i></a>
+                 
                     <!--back button-->
                   <a href="{{ url_for('get_cooking') }}" class="href btn-large red text-shadow">
                       Back <i class="fas fa-times-circle right"></i></a>

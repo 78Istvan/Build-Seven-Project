@@ -210,4 +210,7 @@ ul li {
 .tumb-up {
     margin-left: 15px;
 }
-
+/* modal messages */
+.modal .modal-footer {
+    margin-bottom: 15px;
+}
