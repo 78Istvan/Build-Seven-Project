@@ -21,8 +21,12 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_cooking")
 def get_cooking():
+    if "user" in session:
+        user = mongo.db.users.find_one({"username": session["user"]})
+    else:
+        user = False
     cooking = mongo.db.cooking.find()
-    return render_template("cooking.html", cooking=cooking)
+    return render_template("cooking.html", cooking=cooking, user =user)
 
 
 # registration
@@ -91,17 +95,16 @@ def login():
 
 
 # profile
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-
-    if session["user"]:
-        return render_template("profile.html", username=username)
-
-    return render_template(url_for("login"))
+@app.route("/profile/<user>", methods=["GET", "POST"])
+def profile(user):
+    if "user" in session:
+        if user == session["user"]:
+            cooking = list(mongo.db.cooking.find(
+                {"created_by": session["user"]}))
+    return render_template("profile.html", user = user, cooking = cooking)
 
 
+# logout
 @app.route("/logout")
 def logout():
     # loggong out user, removing session cookie
@@ -219,7 +222,7 @@ def manage_recipe(cook_id=None):
         resp.status_code = 200
         return resp
 
-# search function
+# search in cooking.html 
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")

@@ -142,7 +142,7 @@ img{
 }
 
 .card-img {
-    height: 350px;
+    height: 450px;
     padding: 0;
 }
 
@@ -173,9 +173,6 @@ form .search-field input {
 }
 
 /* social icons / footer */
-footer {
-    
-}
 
 ul li {
     display:inline;
@@ -188,23 +185,6 @@ ul li {
 .s-icon-all {
     text-align: right;
 }
-
-/* rating stars */
-.rating {
-    text-align: center;
-    padding-bottom: 20px;
-}
-
-.rating__star {
-    font-size: 1.3em;
-    cursor: pointer;
-    color: #dabd18b2;
-    transition: filter linear .3s;
- }
- 
-.rating__star:hover {
-    filter: drop-shadow(1px 1px 4px gold);
- }
 
 /* tumb up button rating */
 .tumb-up {
