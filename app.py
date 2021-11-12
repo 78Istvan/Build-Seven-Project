@@ -26,7 +26,7 @@ def get_cooking():
     else:
         user = False
     cooking = mongo.db.cooking.find()
-    return render_template("cooking.html", cooking=cooking, user =user)
+    return render_template("cooking.html", cooking=cooking, user=user)
 
 
 # registration
@@ -101,7 +101,7 @@ def profile(user):
         if user == session["user"]:
             cooking = list(mongo.db.cooking.find(
                 {"created_by": session["user"]}))
-    return render_template("profile.html", user = user, cooking = cooking)
+    return render_template("profile.html", user=user, cooking=cooking)
 
 
 # logout
@@ -125,8 +125,8 @@ def add_recipe():
             "category_name": request.form.get("category_name"),
             "recipe_title": request.form.get("recipe_title"),
             "cooking_time": request.form.get("cooking_time"),
-            "tools": request.form.get("tools").split(","),
-            "ingredients": request.form.get("ingredients").split(","),
+            "tools": request.form.getlist("tools"),
+            "ingredients": request.form.getlist("ingredients"),
             "description": request.form.get("description"),
             "created_by": session["user"]
         }
@@ -147,8 +147,8 @@ def edit_recipe(cook_id):
             "category_name": request.form.get("category_name"),
             "recipe_title": request.form.get("recipe_title"),
             "cooking_time": request.form.get("cooking_time"),
-            "tools": request.form.get("tools").split(","),
-            "ingredients": request.form.get("ingredients").split(","),
+            "tools": request.form.getlist("tools"),
+            "ingredients": request.form.getlist("ingredients"),
             "description": request.form.get("description"),
             "created_by": session["user"]
         }
@@ -221,6 +221,7 @@ def manage_recipe(cook_id=None):
         resp = jsonify(success=True)
         resp.status_code = 200
         return resp
+
 
 # search in cooking.html 
 @app.route("/search", methods=["GET", "POST"])

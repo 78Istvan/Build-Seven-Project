@@ -28,12 +28,12 @@
         <div class="row cookin-row">
                       {% for cook in cooking %}
                       
-                      <div class="col s12 m6 l3">
+                      <div class="col s12 m6 l4">
                      
                   <div class="card">
 
                     <div class="card-image waves-effect waves-block waves-light card-img">
-                      <img class="activator" src="{{ cook.img_url }}" >
+                      <img class="activator" src="{{ cook.img_url }}" alt="recipe image" >
                     </div>
                       <!--recipe title, and 3dots icon-->
                     <div class="card-content">
@@ -58,12 +58,11 @@
                       </div>
                       <!--ingredients section-->
                           <div class="row">
-                            <ul> <p class="prefix ingred"> Ingredients:</p>
-                                {% for ingredient in cook.ingredients %}
-                              <li>{{ ingredient }} </li>
-                                {% endfor %}
-                                  
-                            </ul>
+                            <ul><p class="prefix ingred"> Ingredients:</p>
+                              {% for ingredient in cook.ingredients %}
+                              <li class="list-style">{{ ingredient }}</li>
+                              {% endfor %}
+                          </ul>
                           </div>
                           <!--cooking time section-->
                           <div class="row">
@@ -72,10 +71,10 @@
                           <!--cooking tools-->
                           <div class="row">
                             <ul><p class="prefix ingred">Tools:</p>
-                            {% for tool in cook.tools %}
-                            <li>{{ tool }} </li>
-                            {% endfor %}
-                            </ul>
+                              {% for tool in cook.tools %}
+                              <li class="list-style">{{ tool }}</li>
+                              {% endfor %}
+                          </ul>
                           </div>
                          <!--recipe description-->
                           <div class="row">
