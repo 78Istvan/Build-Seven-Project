@@ -165,7 +165,7 @@ def edit_recipe(cook_id):
 def admin():
     if "user" in session:
         current_user = mongo.db.users.find_one({"_id": ObjectId()})
-        admin_user = mongo.db.cooking.find_one({"added_by": "user"})
+        admin_user = mongo.db.cooking.find_one({"created_by": "user"})
         if current_user == admin_user:
             all_cooking = mongo.db.cooking.find()
             return render_template("admin.html", cooking=all_cooking)

@@ -171,7 +171,11 @@ form .search-field input {
     font-size: 5rem;
     font-family: 'Zen Kurenaido', sans-serif;
 }
-
+.mid-txt {
+    font-size: 3rem;
+    font-family: 'Zen Kurenaido', sans-serif;
+    color: #ffffff;
+}
 /* social icons / footer */
 
 ul li {
