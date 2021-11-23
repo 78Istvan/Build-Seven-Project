@@ -8,19 +8,19 @@
 
 # Table of Content
 
-## [User experience](#user-experience)
+# [User experience](#user-experience)
 
-  - [Project Goal](#project-goal)
+  ## [Project Goal](#project-goal)
 
-  - [External User Goal](#external-user-goal)
+  ## [External User Goal](#external-user-goal)
 
-  - [Site Owner Goal](#site-owner-goal)
+  ## [Site Owner Goal](#site-owner-goal)
 
 ## [Strategy and Scope](#strategy-and-scope)
 
 ## [Design](#design)
 
-  - [Color](#color)
+  * [Color](#color)
   
   - [Styling](#styling)
 
@@ -121,11 +121,12 @@ The main aim of my site to share recipes between people about them BBq experienc
 
 * Color
 
-  * 
+  * The mainly used colors for background and text are brown, orange and white.
+  * Colors for buttons are basic red, green, blue to make them very visible, and attrctive on the site.
 
 * Styling 
 
-  * 
+  * A plain wooden texture background, with brown navbar and footer with the recipe cards in the front of the page.
 
 ### Wireframe
 
@@ -159,10 +160,25 @@ There are three pages on the picture: Home/Login/Your Account pages
 
  * Manual Testing
 
+   * Register function
+   * Login 
+   * Logout
+   * Flesh message
+   * Edit button
+   * Delete button
+   * Back button
+   * Update button
+
  * Functionality Testing
 
  * Responsive testing
+   *  To check responness of the website I used 
+  
+   1 [Responsinator](https://www.responsinator.com/)
 
+   2 [Am I responsive?](http://ami.responsivedesign.is/#)
+
+   3 websites, and development tool.
  * Code Validation
 
  * Performance Testing
