@@ -2,7 +2,7 @@
 
 ## BBQFun
 
-![alt BBQfun page main image](static/images/readme-img.png)
+![alt BBQfun page main image](static/images/readme-img3.png)
 
 [Live Code](https://bbqfun-project.herokuapp.com/)
 
