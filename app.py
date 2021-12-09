@@ -236,14 +236,14 @@ def favourites():
     """
     adds recipes to favourites
     """
-    recipes = list(mongo.db.cooking.find())
+    cook = list(mongo.db.cooking.find())
     
     if "user" in session:
         user = mongo.db.users.find_one({"username": session["user"]})
     else:
         user = False
     return render_template(
-        "favourites.html", recipes=recipes, user=user)
+        "favourites.html", cook=cook, user=user)
 
 
 
