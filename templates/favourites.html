@@ -9,8 +9,8 @@
   <div class="row cookin-row">
     {% if user.favourites|length %}  
       {% for favourite in user.favourites %}
-        {% for cook in cooking %}
-          {% if favourite == cook._id %}
+        {% for recipe in recipes %}
+          {% if favourite == recipe._id %}
     
     <div class="col s12 m6 l4">
    
