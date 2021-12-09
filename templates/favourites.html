@@ -1,0 +1,82 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<div class=" extended">
+    <img src="{{ url_for('static', filename='images/bbq-bg9.jpg') }}" class="bg">
+  </div>
+
+  <div class="row cookin-row">
+    {% if user.favourites|length %}  
+      {% for favourite in user.favourites %}
+        {% for cook in cooking %}
+          {% if favourite == cook._id %}
+    
+    <div class="col s12 m6 l4">
+   
+<div class="card">
+
+  <div class="card-image waves-effect waves-block waves-light card-img">
+    <img class="activator" src="{{ cook.img_url }}" >
+  </div>
+    <!--recipe title, and 3dots icon-->
+  <div class="card-content">
+    <span class="card-title activator grey-text text-darken-4">{{ cook.recipe_title }}  
+      <i class="fas fa-ellipsis-v right"></i></span>
+    <!--rating stars-->
+  </div>
+     
+ 
+  <!--close x icon-->
+  <div class="card-reveal">
+    <span class="card-title grey-text text-darken-4"><i class="fas fa-times white-text right"></i></span>
+ <!--category name in recipe-->
+    <div class="row">
+      <div class="card-category">
+        <span class="card-title">{{ cook.category_name }}</span>
+      </div>
+    </div>
+      <!--recipe title in reveal card-->
+    <div class="row">
+      <p class="card-content-p"><strong> {{ cook.recipe_title }} </strong></p>
+    </div>
+    <!--ingredients section-->
+        <div class="row">
+          <ul> <p class="prefix ingred"> Ingredients:</p>
+              {% for ingredient in cook.ingredients %}
+            <li>{{ ingredient }} </li>
+              {% endfor %}
+                
+          </ul>
+        </div>
+        <!--cooking time section-->
+        <div class="row">
+          <p class="prefix ingred">Cooking time: </p>{{ cook.cooking_time }}
+        </div>
+        <!--cooking tools-->
+        <div class="row">
+          <ul><p class="prefix ingred">Tools:</p>
+          {% for tool in cook.tools %}
+          <li>{{ tool }} </li>
+          {% endfor %}
+          </ul>
+        </div>
+       <!--recipe description-->
+        <div class="row">
+          <p class="prefix ingred">Description:</p> {{ cook.description }}
+        </div>
+        <!--recipe creator-->
+        <div class="row">
+            <p class="center-align"><em>Created by: {{ cook.created_by }}</em></p>
+        </div>
+        <!--edit button in session user/admin account-->
+        <a href="{{ url_for('edit_recipe', cook_id=cook._id) }}" class="btn-large brown center-align">Edit</a>
+       </div> 
+     </div>
+   </div>
+   {% endif %}
+{% endfor %}
+{% endfor %}
+{% endif %}
+
+{% endblock %}

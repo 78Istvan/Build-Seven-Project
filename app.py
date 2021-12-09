@@ -231,6 +231,57 @@ def search():
     return render_template("cooking.html", cooking=cooking)
 
 
+@app.route("/favourites")
+def favourites():
+    """
+    adds recipes to favourites
+    """
+    recipes = list(mongo.db.cooking.find())
+    
+    if "user" in session:
+        user = mongo.db.users.find_one({"username": session["user"]})
+    else:
+        user = False
+    return render_template(
+        "favourites.html", recipes=recipes, user=user)
+
+
+
+@app.route("/recipe/add_to_favourites/<cook_id>")
+def save_to_favourites(cook_id):
+    """
+    add recipes into favourites collection in DB.
+    """
+    if "user" in session:
+        user = mongo.db.users.find_one(
+            {"username": session["user"]})["_id"]
+        mongo.db.users.update_one(
+            {"_id": ObjectId(user)},
+            {"$push": {"favourites": ObjectId(cook_id)}})
+        flash("recipe added to favourites")
+    else:
+        flash("Sorry, you are unable to do this, please log in")
+        return redirect(url_for("login"))
+    return redirect(url_for("get_cooking"))
+
+
+@app.route("/recipe/delete_from_favourites/<cook_id>")
+def delete_from_favourites(cook_id):
+    """
+    deletes recipes from favourites collection in DB and favourites HTML page.
+    """
+    if "user" in session:
+        user = mongo.db.users.find_one(
+            {"username": session["user"]})["_id"]
+        mongo.db.users.update_one(
+            {"_id": ObjectId(user)},
+            {"$pull": {"favourites": ObjectId(cook_id)}})
+        flash("recipe removed from favourites")
+    else:
+        return redirect(url_for("login"))
+    return redirect(url_for("get_cooking"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

@@ -198,3 +198,7 @@ ul li {
 .modal .modal-footer {
     margin-bottom: 15px;
 }
+
+.add_fav {
+    color: #000000;
+}
