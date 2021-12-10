@@ -152,7 +152,7 @@ def edit_recipe(cook_id):
             "description": request.form.get("description"),
             "created_by": session["user"]
         }
-        mongo.db.cooking.update({"_id": ObjectId(cook_id)}, update)
+        mongo.db.cooking.update_one({"_id": ObjectId(cook_id)}, update)
         flash("Recipe Successfully Updated")
 
     cook = mongo.db.cooking.find_one({"_id": ObjectId(cook_id)})
@@ -209,21 +209,21 @@ def manage_recipe(cook_id=None):
             "description": request.form.get("description"),
             "created_by": session["user"]
         }
-        mongo.db.cooking.update({"_id": ObjectId(cook_id)}, update)
+        mongo.db.cooking.update_one({"_id": ObjectId(cook_id)}, update)
         flash("Recipe Successfully Updated")
 
         cook = mongo.db.cooking.find_one({"_id": ObjectId(cook_id)})
         return render_template("edit_recipe.html", cook=cook, cats=cats)
 # delete section
     if request.method == "DELETE":
-        mongo.db.cooking.remove({"_id": ObjectId(cook_id)})
+        mongo.db.cooking.delete_one({"_id": ObjectId(cook_id)})
         flash("Recipe Successfully Deleted")
         resp = jsonify(success=True)
         resp.status_code = 200
         return resp
 
 
-# search in cooking.html 
+# search in cooking.html
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
@@ -231,17 +231,13 @@ def search():
     return render_template("cooking.html", cooking=cooking)
 
 
-@app.route("/favourites")
-def favourites():
+@app.route("/favourites/<user>")
+def favourites(user):
     """
     adds recipes to favourites
     """
     cook = list(mongo.db.cooking.find())
-    
-    if "user" in session:
-        user = mongo.db.users.find_one({"username": session["user"]})
-    else:
-        user = False
+    user = mongo.db.users.find_one({"username": session["user"]})
     return render_template(
         "favourites.html", cook=cook, user=user)
 
