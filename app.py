@@ -244,7 +244,7 @@ def favourites(user):
 
 
 @app.route("/recipe/add_to_favourites/<cook_id>")
-def save_to_favourites(cook_id):
+def add_to_favourites(cook_id):
     """
     add recipes into favourites collection in DB.
     """
@@ -254,7 +254,7 @@ def save_to_favourites(cook_id):
         mongo.db.users.update_one(
             {"_id": ObjectId(user)},
             {"$push": {"favourites": ObjectId(cook_id)}})
-        flash("recipe added to favourites")
+        flash("Recipe added to favourites")
     else:
         flash("Sorry, you are unable to do this, please log in")
         return redirect(url_for("login"))
@@ -272,7 +272,7 @@ def delete_from_favourites(cook_id):
         mongo.db.users.update_one(
             {"_id": ObjectId(user)},
             {"$pull": {"favourites": ObjectId(cook_id)}})
-        flash("recipe removed from favourites")
+        flash("Recipe removed from favourites")
     else:
         return redirect(url_for("login"))
     return redirect(url_for("get_cooking"))
