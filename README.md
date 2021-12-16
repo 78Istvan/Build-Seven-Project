@@ -146,6 +146,22 @@ There are three pages on the picture: Home/Login/Your Account pages
 
 ## Features
 
+ - Registration option
+
+ - Login option
+
+ - Logout option
+
+ - Create a recipe
+
+ - Edit your own recipe
+
+ - Delete your own recipe
+
+ - Add any recipe on site to your oen favourites
+
+ - Remove favourite recipe from your favorites
+
 ## Technology used
 
  * Lenguages used 
@@ -228,7 +244,6 @@ To work on the project code within a local IDE such as VSCode, Pycharm etc:
 ## Content
 
 ## Acknowledgements
-
 
 
 
