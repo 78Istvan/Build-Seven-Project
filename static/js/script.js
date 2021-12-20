@@ -38,15 +38,7 @@ function updateRecipe(id) {
   });
 
 }
-/*
-$("#textarea, #textarea-ok").hide(); 
-$("#showarea").click(function(){
-      $("#textarea").fadeIn(4000);
-});
-$("#textarea-ok").click(function(){
-      $("#textarea").fadeOut(4000);
-});
-*/
+
 var textarea = $('#area');
 $("#popup").click(function(){
 

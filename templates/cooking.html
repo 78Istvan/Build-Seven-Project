@@ -98,7 +98,7 @@
                               {% if session.user|lower == cook.created_by|lower %}
                                 {% if session["user"] != "admin" %}
                                   <div class="row">
-                                    <a href="{{ url_for('edit_recipe', cook_id=cook._id) }}" class="btn-large brown center-align">Edit</a>
+                                    <a href="{{ url_for('edit_recipe', cook_id=cook._id) }}" class="btn-small brown center-align">Edit</a>
                                   </div>
                                 {% endif %}
                               {% endif %}
@@ -118,7 +118,7 @@
                           <!--these two buttons always available for admin when logged in-->
                               {% if session["user"] == "admin" %}
                                   <div class="row">
-                                    <a href="{{ url_for('edit_recipe', cook_id=cook._id) }}" class="btn-large brown center-align">Edit</a>
+                                    <a href="{{ url_for('edit_recipe', cook_id=cook._id) }}" class="btn-small brown center-align">Edit</a>
                                   </div>
                                   <div class="row">
                                     <a href="{{ url_for('add_to_favourites', cook_id=cook._id) }}" class="add_fav">Add to favourites <i class="far fa-heart"></i></a> 

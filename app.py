@@ -161,7 +161,6 @@ def edit_recipe(cook_id):
     cook=cook, categories=categories)
 
 
-
 @app.route("/admin")
 def admin():
     if "user" in session:
