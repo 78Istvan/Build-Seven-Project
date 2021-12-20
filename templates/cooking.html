@@ -94,7 +94,7 @@
                           </div>
                           <!--edit button in session user/admin account-->
                           <div class="row">
-                         
+                         <!--edit button visiable only logged in user owned recipe and for admin for all recipes-->
                               {% if session.user|lower == cook.created_by|lower %}
                                 {% if session["user"] != "admin" %}
                                   <div class="row">
@@ -102,15 +102,20 @@
                                   </div>
                                 {% endif %}
                               {% endif %}
-
+                          <!--add favourites option availabe on all recipes for all logged in user-->
                               {% if session.user %}
                                 {% if session["user"] != "admin" %}
                                   <div class="row">
                                     <a href="{{ url_for('add_to_favourites', cook_id=cook._id) }}" class="add_fav">Add to favourites <i class="far fa-heart"></i></a> 
                                   </div>
+                                  <div class="row">
+                                  <a class="waves-effect waves-light btn-small"  type="submit" id="popup" value="OK">Leave review</a>
+                                  <a class="waves-effect waves-light btn-small"><i class="fab fa-telegram-plane"></i>Send</a>
+                                  <textarea rows="2" cols="20" id="area" style="display:none"></textarea>
+                                </div>
                                 {% endif %}
                               {% endif %}
-
+                          <!--these two buttons always available for admin when logged in-->
                               {% if session["user"] == "admin" %}
                                   <div class="row">
                                     <a href="{{ url_for('edit_recipe', cook_id=cook._id) }}" class="btn-large brown center-align">Edit</a>

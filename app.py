@@ -157,8 +157,9 @@ def edit_recipe(cook_id):
 
     cook = mongo.db.cooking.find_one({"_id": ObjectId(cook_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_recipe.html"
-    , cook=cook, categories=categories)
+    return render_template("edit_recipe.html",
+    cook=cook, categories=categories)
+
 
 
 @app.route("/admin")
